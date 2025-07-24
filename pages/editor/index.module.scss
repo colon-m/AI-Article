@@ -1,0 +1,16 @@
+.container{
+
+    .header{
+        display: flex;
+
+        .title {
+            width: 95%;
+        }
+        .submit {
+            width: 5%;
+        }
+    }
+    .tags {
+        width: 100%;
+    }
+}

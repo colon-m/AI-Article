@@ -1,0 +1,54 @@
+.container{
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f1f1f1;
+
+    .article{
+        cursor: pointer;
+        .titleArea{
+            display: flex;
+            .text{
+                width: auto; 
+            }
+            .title{
+                flex: 1;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow:ellipsis;
+            }
+        }
+        .content{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+        }
+    }
+    .info{
+        margin-top: 10px;
+        display: flex;
+        align-items: flex-end;
+        font-size: small;
+        color: #7e7e7e;
+        .avatar{
+            height: 100%;
+        }
+        .author{
+            margin-right: 20px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+                color: rgb(55, 165, 255);
+            }
+        }
+        .time{
+            margin-right: 20px;
+        }
+        .view{
+            display: flex;
+            align-items: center;
+            .number {
+                margin-left: 2px;
+            }
+        }
+    }
+}
