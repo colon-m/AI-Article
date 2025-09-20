@@ -1,0 +1,52 @@
+.container{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    
+    .header{
+        margin-bottom: 10px;
+        border-bottom: 1px solid whitesmoke;
+        
+        .title{
+            margin-bottom: 4px;
+        }
+        .info {
+            display: flex;
+            margin-bottom: 4px;
+            
+            .right{
+                
+                .author {
+                    display: flex;
+                    font-size: small;
+                    color: rgb(133, 133, 133);
+                    .nickname{
+                        margin-right: 10px;
+                    }
+                    .job{
+                        margin-right: 10px;
+                    }
+                }
+                .otherInfo{
+                    display: flex;
+                    font-size: small;
+                    color: rgb(133, 133, 133);
+                    .create_time{
+                        margin-right: 10px;
+                    }
+                    .update_time{
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+
+        }
+    }
+    .body{
+        .content{
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+}

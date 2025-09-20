@@ -1,30 +1,40 @@
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
 import styles from "./index.module.scss"
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { useEffect, useState, useRef } from "react";
 import { Input,Button,message,Select, Space } from "antd";
 import * as ICON from "@ant-design/icons";
 import fetch from "service/fetch";
 import { useRouter } from "next/router";
 import { Itag } from "../tag";
+import uphandleUploadImg from "utils/handleUploadImg";
+import 'react-markdown-editor-lite/lib/index.css';
+import { useStore } from "store";
+import AITogglePlugin from "components/EditerPluginAI";
+import AITansPlugin from "components/EditerPluginTrans";
 
-const MDEditor = dynamic(
-  () => import("@uiw/react-md-editor"),
-  { ssr: false }
-);
+const MdEditor = dynamic(() => import('react-markdown-editor-lite').then((mod) => {
+  mod.default.use(AITogglePlugin);
+  mod.default.use(AITansPlugin);
+  return mod.default;
+}), {
+  ssr: false,
+});
+console.log("MdEditor:",MdEditor)
 interface Iresponse {
   code: number;
   msg: string;
   data?: any;
 }
 const New = () => {
-  const [value, setValue] = useState("**Hello world!!!**");
+  const [value, setValue] = useState("");
   const [title, setTitle] = useState<string>("");
   const [allTags, setAllTags] = useState<Itag[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [messageApi, contextHolder] = message.useMessage();
   const router = useRouter();
+  const userStore = useStore().userStore;
+  const id = userStore.userInfo?.id;
   useEffect(()=>{
     fetch.get('/api/tag/get').then((res:any)=>{
       if(res.code === 0){
@@ -32,6 +42,7 @@ const New = () => {
       }
     })
   },[]);
+
   const handleSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
   }
@@ -58,12 +69,10 @@ const New = () => {
       }
     }
   }
-  const handlesetValue = (content: any)=> {
-    setValue(content)
-  };
   const handleChange = (value: string[]) => {
     setSelectedTags(value)
   };
+  const handleUpload = (file: File) => uphandleUploadImg(file, id!);
   return (
     <div className={styles.container}>
       {contextHolder}
@@ -94,7 +103,9 @@ const New = () => {
           )}
         />
       </div>
-      <MDEditor value={value} height={1080} onChange={handlesetValue} />
+      <div>
+        <MdEditor value={value} onImageUpload={handleUpload} style={{ height: "1080px" }} onChange={({ text }) => setValue(text)} renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>} />
+      </div>
     </div>
   );
 }

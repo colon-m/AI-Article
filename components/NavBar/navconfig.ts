@@ -4,8 +4,8 @@ const navConfig = [
         path: "/",
     },
     {
-        title: "咨询",
-        path: "/res",
+        title: "分类",
+        path: "/categories",
     },
     {
         title: "标签",

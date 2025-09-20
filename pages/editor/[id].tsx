@@ -1,8 +1,7 @@
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
 import styles from "./index.module.scss"
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { Input,Button,message,Select, Space } from "antd";
 import * as ICON from "@ant-design/icons";
 import fetch from "service/fetch";
@@ -10,12 +9,13 @@ import { useRouter } from "next/router";
 import getDatabaseConnection from "db";
 import { Article } from "db/entities/article";
 import { Tag } from "db/entities";
+import { useStore } from "store";
+import handleUploadImg from "utils/handleUploadImg";
+import 'react-markdown-editor-lite/lib/index.css';
 
-
-const MDEditor = dynamic(
-  () => import("@uiw/react-md-editor"),
-  { ssr: false }
-);
+const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
+  ssr: false,
+});
 interface Iresponse {
   code: number;
   msg: string;
@@ -51,6 +51,8 @@ const Update = ({article,tags}:{article:Article,tags:Tag[]}) => {
   const [title, setTitle] = useState<string>(`${article.title}`);
   const [messageApi, contextHolder] = message.useMessage();
   const router = useRouter();
+  const userStore = useStore().userStore;
+  const id = userStore.userInfo?.id;
   const defaultTag = article.tags.map(tag=>tag.title);
   const handleSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
@@ -80,11 +82,12 @@ const Update = ({article,tags}:{article:Article,tags:Tag[]}) => {
     }
   }
   const handlesetValue = (content: any)=> {
-    setValue(content)
+    setValue(content.text)
   };
   const handleChange = (value: string[]) => {
   setSelectedTags(value)
   };
+  const handleUpload = (file: File) => handleUploadImg(file, id!);
   return (
     <div className={styles.container}>
       {contextHolder}
@@ -115,7 +118,7 @@ const Update = ({article,tags}:{article:Article,tags:Tag[]}) => {
           )}
         />
       </div>
-      <MDEditor value={value} height={1080} onChange={handlesetValue} />
+      <MdEditor value={value} onImageUpload={handleUpload} style={{ height: "1080px" }} onChange={handlesetValue} renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>} />
     </div>
   );
 }

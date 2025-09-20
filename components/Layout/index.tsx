@@ -1,15 +1,18 @@
 import { ReactElement } from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
+import SideCard from "../SideCard";
 
 interface Iprops{
-    children:ReactElement
+    children:ReactElement,
+    showSideCard?: boolean
 }
-const Layout = ({children}:Iprops) =>{
+const Layout = ({children, showSideCard = true}:Iprops) => {
     return(
         <div>
             <NavBar />
-                {children}
+            {showSideCard && <SideCard />}
+            {children}
             <Footer />
         </div>
     )

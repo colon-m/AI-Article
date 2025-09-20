@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { UserAuth,User,Article,Comment,UserGitMapper, Tag } from "./entities";
+import { UserAuth,User,Article,Comment,UserGitMapper, Tag, Record,RecordArticle } from "./entities";
 
 const database = new DataSource({
     type: "mysql",
@@ -9,7 +9,7 @@ const database = new DataSource({
     username: "root",
     password: "junheng7023",
     database: "blog",
-    entities: [UserAuth,User,Article,Comment,UserGitMapper,Tag],
+    entities: [UserAuth,User,Article,Comment,UserGitMapper,Tag,Record,RecordArticle],
     synchronize: false,
     logging: false,
 });

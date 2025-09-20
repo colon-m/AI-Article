@@ -14,9 +14,9 @@ const StoreContext = createContext({});
 export const StoreProvider = ({initValue,children}:Iprops) =>{
     const store: Istore = useLocalObservable(createStore(initValue));
     return (
-        <StoreContext value={store}>
+        <StoreContext.Provider value={store}>
             {children}
-        </StoreContext>
+        </StoreContext.Provider>
     );
 };
 

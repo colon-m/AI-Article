@@ -1,0 +1,80 @@
+
+.container {
+    position: absolute;
+    top: 62px;
+    right: 2px;
+    width: 280px;
+    // height: 260px;
+
+    .viewHistory{
+        width: 100%;
+        background-color: #ffffff;
+        border: 1px solid #eee;
+        padding: 4px 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #eee;
+            a{
+                margin-left: 14px;
+                color: #1890ff;
+                text-decoration: none;
+                font-size: small;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .content {
+            padding: 8px 0;
+            .item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .title{
+                    margin-left: 4px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    color: #333;
+                    font-size: small;
+                }
+            }
+        }
+    }
+    .recommend{
+        width: 100%;
+        margin-top: 20px;
+        background-color: #ffffff;
+        border: 1px solid #eee;
+        padding: 4px 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #eee;
+        }
+        .content {
+            padding: 8px 0;
+            .item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .title{
+                    margin-left: 4px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    color: #333;
+                    font-size: small;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+// components/AITogglePlugin.module.scss
+.aiModal {
+  .ant-modal-body {
+    padding: 20px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputSection {
+  margin-bottom: 20px;
+  
+  .buttonGroup {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.responseSection {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 20px;
+  
+  .aiResponse {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    white-space: pre-wrap;
+  }
+  
+  .actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

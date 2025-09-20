@@ -2,27 +2,37 @@ import navConfig from "./navconfig";
 import Link from "next/link";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Login from "components/Login";
 import { useStore } from "@/store";
 import {Avatar,Dropdown,Menu} from "antd";
 import {LogoutOutlined,HomeOutlined } from "@ant-design/icons";
 import fetch from "service/fetch"
 import { message } from "antd";
-import {observer} from "mobx-react-lite"
+import {observer} from "mobx-react-lite";
+import { useElement } from "hooks/useElement";
 
 
 const NavBar = () => {
     const store = useStore()
     const user = store.userStore.userInfo
     const [isLogin, setIsLogin] = useState(false);
+    const [ms, setMs] = useState<number[]>([]);
     const router = useRouter();
+    const {elements,addElement} = useElement();
+    useEffect(()=>{
+        elements.current.map((item: HTMLDivElement)=>{
+            setTimeout(()=>{
+                item.classList.add(styles.initStatus)
+            },Number(item.dataset.delay))
+        })
+    },[])
     const hanldeLogout = ()=>{
         fetch.post('api/user/logout').then((res:any)=>{
             if(res.code === 0){
                 message.success('退出成功')
                 store.userStore.userInfo = null
-                console.log("store:",store)
+                store.viewedArticlesStore.modefyUser();
             }
         })
     }
@@ -35,7 +45,7 @@ const NavBar = () => {
         }else{
             message.warning("请先登录")
         }
-    }
+    };
     const menu = (
         <Menu>
             <Menu.Item>
@@ -48,31 +58,33 @@ const NavBar = () => {
             </Menu.Item>
         </Menu>
     );
-
+    useEffect(()=>{
+        setMs(new Array(8).fill(0).map(()=>Math.random()*2000))
+    },[])
     return (
         <div className={styles.nav}>
-            <section className={styles.logo}>BLOG</section>
+            <div ref={addElement} data-delay={ms[0]} className={styles.logo}>BLOG</div>
             <div className={styles.main}>
                 {navConfig.map((item, index) => {
                     return (
-                        <section key={index}>
+                        <div ref={addElement} data-delay={1000*(index + 1)} className={styles.opacity} key={index}>
                             <Link href={item.path} className={`${styles.item} ${router.pathname === item.path ? styles.active : ''}`}>{item.title}</Link>
-                        </section>
+                        </div>
                     )
             })}
             </div>
-            <section className={styles.right}>
+            <div ref={addElement} data-delay={ms[8]} className={styles.right}>
                 <button className={styles.btn} onClick={handleWrite}>写文章</button>
                 {
                     user
                     ?
                     <Dropdown overlay={menu} placement="bottomLeft">
-                        <Avatar src={user.avatar} />
+                        <Avatar size="large" src={user.avatar} />
                     </Dropdown>
                     :
                     <button className={styles.btn} onClick={() => setIsLogin(!isLogin)}>登录</button>
                 }
-            </section>
+            </div>
             <Login isLogin={isLogin} onClose={() => setIsLogin(false)} />
         </div>
     )

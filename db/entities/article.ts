@@ -1,7 +1,8 @@
-import { Column, PrimaryGeneratedColumn, Entity, ManyToOne,JoinColumn, OneToMany, ManyToMany} from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity, ManyToOne,JoinColumn, OneToMany, ManyToMany,OneToOne} from "typeorm";
 import { User } from "./user";
 import { Comment } from "./comment";
 import { Tag } from "./tag"
+import { RecordArticle } from "./records_articles_rel";
 
 @Entity('articles')
 export class Article {
@@ -34,5 +35,10 @@ export class Article {
     comments!:Comment[];
 
     @ManyToMany(()=>Tag,(tag)=>tag.articles,{cascade:true})
-    tags!: Tag[]
+    tags!: Tag[];
+
+// ✅ 添加反向关系
+  @OneToMany(() => RecordArticle, recordArticle => recordArticle.article)
+  recordArticles!: RecordArticle[];
+
 }

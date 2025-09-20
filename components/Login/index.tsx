@@ -9,8 +9,8 @@ import { observer } from "mobx-react-lite";
 // Client ID: Iv23liuoBZhXWq2TViMw
 // App ID: 1630094
 interface LoginProps {
-  isLogin: boolean;
-  onClose: () => void;
+  isLogin: boolean,
+  onClose: () => void
 }
 interface Iresponse {
   code: number;
@@ -18,7 +18,7 @@ interface Iresponse {
   data?: any;
 }
 
-const Login = ({ isLogin, onClose }: LoginProps) => {
+const Login = ({  isLogin, onClose }: LoginProps) => {
   const store = useStore()
   const [form, setForm] = useState({
     phone: "",
@@ -48,7 +48,7 @@ const Login = ({ isLogin, onClose }: LoginProps) => {
     }
     const response: Iresponse = await fetch.post('/api/user/getVarify', { phone: form.phone });
     console.log("获取验证码结果", response);
-    const { code, msg } = response;
+    const { code, msg } = response.data;
     if(code !== 0) {
       alert(msg);
       return;
@@ -61,12 +61,13 @@ const Login = ({ isLogin, onClose }: LoginProps) => {
     }
     const response: Iresponse = await fetch.post('/api/user/login', {...form,identity_type: 'phone'});
     console.log("登录结果", response);
-    const { code, msg, data } = response;
-    if (code === 0) {
+    const { code, msg, data } = response.data;
+    if (Number(code) === 0) {
       alert("登录成功");
       //存储用户信息
-      store.userStore.setUserInfo(data.user)
-      console.log(store)
+      store.userStore.setUserInfo(data.user);
+      store.viewedArticlesStore.modefyUser(data.user);
+      // await store.viewedArticlesStore.initiateRecords();
       onClose && onClose();
     } else {
       alert(msg);

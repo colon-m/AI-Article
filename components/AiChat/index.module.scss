@@ -1,0 +1,61 @@
+.window{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 400px;
+    border-radius: 10px;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #fff;
+    border: 3px solid #006eff;
+    &:hover {
+        cursor: move;
+    }
+    .chatArea{
+        flex: 1;
+        box-sizing: border-box;
+        padding: 0px 10px 10px;
+        overflow: auto;
+        cursor: auto;
+        .userRecord{
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            .warp{
+                padding: 0px 4px;
+                background: linear-gradient(135deg, #165DFF 0%, #4080FF 100%);
+                color: white;
+                border-radius: 18px 18px 0 18px;
+                box-shadow: 0 2px 8px rgba(22, 93, 255, 0.15);
+            }
+            
+        }
+        .assiRecord {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+            .warp{
+                padding: 0px 4px;
+                background: #d4d4d4;
+                color: #333;
+                border-radius: 18px 18px 18px 0; // 左上角直角，形成气泡尖角效果
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+    .inputArea {
+        width: 100%;
+        display: flex;
+        .input{
+            width: 90%;
+        }
+        .btn{
+            width: 10%;
+            height: 100%;
+            text-wrap: wrap;
+        }
+    }
+}

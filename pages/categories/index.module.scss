@@ -1,0 +1,22 @@
+.container{
+    background-color: #fff;
+
+    .oneCategoryArticles{
+        padding: 20px 20px;
+        .header{
+            display: flex;
+            align-items: flex-end;
+            .more {
+                margin-left: 10px;
+                font-size: 14px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .devider {
+        height: 40px;
+        background-color: #cecece;
+    }
+}

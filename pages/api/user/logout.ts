@@ -6,9 +6,9 @@ import { deleteCookie } from "cookies-next";
 
 export default async function Logout (req: NextApiRequest, res: NextApiResponse) {
     const session = await getIronSession(req, res, IronOptions);
+
     session.destroy()
     await deleteCookie('user',{req,res})
-
     res.status(200).json({
         code: 0,
         msg: '退出成功'

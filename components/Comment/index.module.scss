@@ -1,0 +1,49 @@
+.content {
+    background-color: rgb(255, 255, 255);
+    padding: 20px 20px;
+    .txt{
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .header{
+        display: flex;
+        .Avatar{
+            display: flex;
+            width: auto;
+            align-items: center;
+        }
+        .editArea{
+            flex: 1;
+            // .editor{
+                
+            // }
+        }
+    }
+    .submit{
+        margin-top: 4px;
+        position: relative;
+        height: 40px;
+        .btn{
+            position: absolute;
+            width: auto;
+            top: 0;
+            right: 0;
+        }
+    }
+    .comment{
+        display: flex;
+        margin-top: 20px;
+        .mainInfo{
+            display: flex;
+            flex-direction: column;
+            .comtxt{
+                margin :20px 10px;
+            }
+            .createTime {
+                font-size: smaller;
+                color: #cecece;
+            }
+        }
+    }
+}

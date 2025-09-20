@@ -30,15 +30,15 @@ export default async function(req: NextApiRequest, res: NextApiResponse<Data>) {
       Authorization: authorization,
     }
   });
-  const {statusCode, templateSMS, statusMsg} = back as any;
+  const {statusCode, templateSMS} = back.data as any;
+  console.log("statusCode：", statusCode);
   if (statusCode === '000000') {
-    console.log("验证码",varifyCode)
     session.varifyCode = varifyCode;
     await session.save();
     console.log("session验证码",session.varifyCode)
     res.status(200).json({
       code: 0,
-      msg: statusMsg,
+      msg: '发送成功',
       data: {
         templateSMS,  
       },
@@ -46,7 +46,7 @@ export default async function(req: NextApiRequest, res: NextApiResponse<Data>) {
   } else {
     res.status(200).json({
       code: statusCode,
-      msg: statusMsg,
+      msg: "获取失败",
     });
   }
 }

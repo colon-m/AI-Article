@@ -1,0 +1,12 @@
+.container{
+    position: relative;
+    .copyButton{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: transparent;
+        background-color: rgb(167, 167, 167);
+        border: none;
+        cursor: pointer;
+    }
+}

@@ -1,5 +1,3 @@
-import { userInfo } from "os"
-
 export type IuserInfo = {
     id: number,
     nickname: string,
@@ -13,7 +11,7 @@ export interface IuserStore {
     setUserInfo: (value:IuserInfo)=>void 
 }
 
-export const createUseStore = ():IuserStore =>{
+export const createUserStore = ():IuserStore =>{
     return{
         userInfo: null,
         setUserInfo(value){

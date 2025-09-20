@@ -5,7 +5,6 @@ import { getIronSession } from "iron-session";
 import type { ISession } from "pages/api/interface";
 import { IronOptions } from "config/index";
 import { EXCEPTION_TAG,EXCEPTION_USER } from "../exception.config";
-import { code } from "@uiw/react-md-editor";
 
 
 export default async function Publish(req: NextApiRequest, res: NextApiResponse){
