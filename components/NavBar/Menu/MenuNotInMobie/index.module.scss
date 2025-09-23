@@ -1,0 +1,20 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .item {
+        margin: 0 15px;
+        color: #343a40;
+        text-decoration: none;
+        font-size: 18px;
+
+        &.active {
+            color: #007bff;
+            font-weight: bold;
+        }
+        &:hover {
+            color: #a3cefc;
+        }
+    }
+}

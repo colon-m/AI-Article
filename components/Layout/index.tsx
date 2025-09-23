@@ -11,8 +11,8 @@ const Layout = ({children, showSideCard = true}:Iprops) => {
     return(
         <div>
             <NavBar />
-            {showSideCard && <SideCard />}
             {children}
+            {showSideCard && <SideCard />}
             <Footer />
         </div>
     )

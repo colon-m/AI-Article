@@ -5,9 +5,6 @@ import fetch from "service/fetch";
 import { useStore } from "store";
 import { observer } from "mobx-react-lite";
 
-//Client secret: 07df420dd33fd66b1e086f63f1ea6dcd79f87e86
-// Client ID: Iv23liuoBZhXWq2TViMw
-// App ID: 1630094
 interface LoginProps {
   isLogin: boolean,
   onClose: () => void

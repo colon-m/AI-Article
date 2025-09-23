@@ -1,0 +1,26 @@
+.right {
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+    .btn {
+        width: 5rem;
+        height: 2.5rem;
+        max-width: 80px;
+        max-height: 40px;
+        border: none;
+        background-color: #007bff;
+        border-radius: 8px;
+        margin-right: 20px;
+        color: #ffffff;
+        cursor: pointer;
+        &:hover {
+            background: #0059b8;
+        }
+    }
+    .icon {
+        position: relative;
+        right: -10px;
+        font-size: 1rem;
+        padding-left: 8px;
+    }
+}

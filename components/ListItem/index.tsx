@@ -8,13 +8,14 @@ import { useRouter } from 'next/router';
 import { observer } from 'mobx-react-lite';
 import { ArticleNode } from '@/utils/searchArticles';
 interface Iprops {
-    arts:Article[] | ArticleNode[],
+    arts?:Article[] | ArticleNode[],
     ref?: any,
-    isFirstRender?: boolean
-    index?: number
+    isFirstRender?: boolean,
+    index?: number,
+    article: Article | ArticleNode
 }
-const ListItem = ({index,arts,ref,isFirstRender}:Iprops) =>{
-    const {title,content,update_time,user, view,id} = arts[index!]
+const ListItem = ({index,arts,ref,isFirstRender,article}:Iprops) =>{
+    const {title,content,update_time,user, view,id} = arts ? arts[index!] : article
     const {nickname,avatar} = user
     const router = useRouter()
     const handleGoToDetails = ()=>{

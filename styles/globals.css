@@ -50,3 +50,120 @@ body {
         }
     }
 }
+@media only screen and (max-width: 475px){
+  .centerlayout {
+    margin: 0 10px;
+  }
+  body {
+    font-size: 8px;
+  }
+  .mediaSider{
+    position: unset;
+    margin: 0 10px;
+    /* width: 6rem !important; */
+  }
+  /* .mediaSearch{
+    width: 6rem;
+  } */
+}
+
+@media only screen and (min-width: 475px){
+  .centerlayout {
+    margin: 0 10px;
+  }
+  body {
+    font-size: 8px;
+  }
+  .mediaSider{
+    position: unset;
+    margin: 0 10px;
+  }
+}
+
+@media only screen and (min-width: 768px){
+  .centerlayout {
+    margin: 0 200px;
+  }
+  body {
+    font-size: 10px;
+  }
+  .mediaSider{
+    position: absolute;
+    width: 12rem;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .centerlayout {
+    margin: 0 250px;
+  }
+  body {
+    font-size: 14px;
+  }
+  .mediaSider{
+    position: absolute;
+    width: 15rem;
+  }
+}
+
+@media only screen and (min-width: 1280px){
+  .centerlayout {
+    margin: 300px;
+  }
+  body {
+    font-size: 16px;
+  }
+  .mediaSider{
+    position: absolute;
+    width: 17rem;
+  }
+}
+
+@keyframes flyIn {
+  0% {
+    transform: translateY(-100vh) scale(1.5);
+    animation-timing-function: ease-in; 
+    opacity: 0.7;
+  }
+  
+  20% {
+    transform: translateY(-0) scale(1); 
+    animation-timing-function: ease-out; 
+    opacity: 0.8;
+  }
+  
+  40% {
+    transform: translateY(-10vh) scale(1.2); 
+    animation-timing-function: ease-in;
+  }
+  
+  60% {
+    transform: translateY(-0) scale(1); 
+    animation-timing-function: ease-out;
+    opacity: 0.9;
+  }
+  
+  80% {
+    transform: translateY(-5vh) scale(1.1);  
+    animation-timing-function: ease-in;
+  }
+  
+  90% {
+    transform: translateY(-2vh) scale(1);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateY(-0) scale(1); 
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+}
+
+.bullet {
+  opacity: 0;
+  transform: translateY(-100vh);
+  animation: flyIn 3s ease forwards;
+}

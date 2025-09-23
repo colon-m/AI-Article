@@ -22,7 +22,7 @@ const SideCard = () => {
         });
     },[viewedArticlesStore.name]);
     return (
-        <div className={styles.container}>
+        <div className={`mediaSider ${styles.container}`}>
             <div className={styles.viewHistory}>
                 <div className={styles.header}>
                     <h4>最近浏览</h4>

@@ -74,7 +74,8 @@ export async function getServerSideProps(context: any){
     }
   }
 }
-export const home = ({articles, count, totalPages, currentPage, pageSize, isCrawler = false}:Iprops)=>{
+
+const Home = ({articles, count, totalPages, currentPage, pageSize, isCrawler = false}:Iprops)=>{
   "use client";
   const [messageApi, contextHolder] = message.useMessage();
   const [arts,setArts] = useState<Article[] | ArticleNode[]>(articles);
@@ -192,7 +193,7 @@ export const home = ({articles, count, totalPages, currentPage, pageSize, isCraw
           <h2>文章</h2>
         </div>
         <div ref={addElement} data-delay={1232} className={styles.searchArea}>
-          <Search className={styles.search} placeholder="输入关键字" value={key} onChange={handleSetKey}  onSearch={handleSearch} enterButton />
+          <Search className={`mediaSearch ${styles.search}`} placeholder="输入关键字" value={key} onChange={handleSetKey}  onSearch={handleSearch} enterButton />
         </div>
       </div>
       <div ref={curArticles} className={styles.articles}>
@@ -218,4 +219,4 @@ export const home = ({articles, count, totalPages, currentPage, pageSize, isCraw
   )
 }
 
-export default home;
+export default Home;
