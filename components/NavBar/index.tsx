@@ -35,11 +35,19 @@ const NavBar = () => {
     }, []);
 
     useEffect(()=>{
-        elements.current.map((item: HTMLDivElement)=>{
-            setTimeout(()=>{
-                item.classList.add(styles.initStatus)
-            },Number(item.dataset.delay))
-        })
+        // if(!elements.current) return;
+        // elements.current.map((item: HTMLDivElement)=>{
+        //     setTimeout(()=>{
+        //         item.classList.add(styles.initStatus)
+        //     },Number(item.dataset.delay))
+        // });
+        if(!elements.current) return;
+            elements.current.map((item: HTMLDivElement)=>{
+                item.classList.remove("bullet")
+            })
+        return () =>{
+            
+        }
     },[])
 
     const hanldeLogout = ()=>{

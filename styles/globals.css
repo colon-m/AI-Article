@@ -163,7 +163,7 @@ body {
 }
 
 .bullet {
-  opacity: 0;
+  /* opacity: 0;
   transform: translateY(-100vh);
-  animation: flyIn 3s ease forwards;
+  animation: flyIn 3s ease forwards; */
 }
